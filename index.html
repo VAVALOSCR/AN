@@ -71,6 +71,11 @@ h2{
     transform:scale(1.05);
 }
 
+.botones button:disabled{
+    background:#ccc;
+    cursor:not-allowed;
+}
+
 .mensaje{
     display:none;
     background:white;
@@ -123,11 +128,11 @@ footer{
 
 <div class="botones">
 
-<button onclick="mostrar(1)">💞 Nuestro Inicio</button>
-<button onclick="mostrar(2)">✨ Cambiaste Mi Vida</button>
-<button onclick="mostrar(3)">🌎 La Mejor Mamá</button>
-<button onclick="mostrar(4)">🎵 Nuestra Canción 1</button>
-<button onclick="mostrar(5)">🎶 Nuestra Canción 2</button>
+<button id="b1" onclick="mostrar(1)" disabled>💞 Nuestro Inicio</button>
+<button id="b2" onclick="mostrar(2)" disabled>✨ Cambiaste Mi Vida</button>
+<button id="b3" onclick="mostrar(3)" disabled>🌎 La Mejor Mamá</button>
+<button id="b4" onclick="mostrar(4)" disabled>🎵 Nuestra Canción 1</button>
+<button id="b5" onclick="mostrar(5)" disabled>🎶 Nuestra Canción 2</button>
 
 </div>
 
@@ -289,7 +294,7 @@ function mostrar(num){
 }
 
 
-/* CONTADOR */
+/* CONTADOR Y DESBLOQUEO */
 
 const fecha = new Date("February 1, 2026 00:00:00").getTime();
 
@@ -304,6 +309,11 @@ setInterval(()=>{
         "🎉 FELIZ 9 MESES MI AMOR ❤️ 🎉";
 
         document.getElementById("final").style.display="block";
+
+        // DESBLOQUEAR BOTONES
+        for(let i=1;i<=5;i++){
+            document.getElementById("b"+i).disabled = false;
+        }
 
         return;
     }
@@ -321,4 +331,3 @@ setInterval(()=>{
 
 </body>
 </html>
-
