@@ -71,11 +71,6 @@ h2{
     transform:scale(1.05);
 }
 
-.botones button:disabled{
-    background:#ccc;
-    cursor:not-allowed;
-}
-
 .mensaje{
     display:none;
     background:white;
@@ -128,11 +123,11 @@ footer{
 
 <div class="botones">
 
-<button id="b1" onclick="mostrar(1)" disabled>💞 Nuestro Inicio</button>
-<button id="b2" onclick="mostrar(2)" disabled>✨ Cambiaste Mi Vida</button>
-<button id="b3" onclick="mostrar(3)" disabled>🌎 La Mejor Mamá</button>
-<button id="b4" onclick="mostrar(4)" disabled>🎵 Nuestra Canción 1</button>
-<button id="b5" onclick="mostrar(5)" disabled>🎶 Nuestra Canción 2</button>
+<button onclick="mostrar(1)">💞 Nuestro Inicio</button>
+<button onclick="mostrar(2)">✨ Cambiaste Mi Vida</button>
+<button onclick="mostrar(3)">🌎 La Mejor Mamá</button>
+<button onclick="mostrar(4)">🎵 Nuestra Canción 1</button>
+<button onclick="mostrar(5)">🎶 Nuestra Canción 2</button>
 
 </div>
 
@@ -144,7 +139,7 @@ footer{
 <img src="foto1.jpg">
 
 <p>
-Nuestro amor nació sin planes, sin buscar nada, sin esperar nada.
+Nuestro amor nació sin planes, sin buscar nada, sin expectativas.
 Empezó como un juego, como risas, como bromas sin intención,
 y sin darnos cuenta se volvió lo más bonito de mi vida.
 </p>
@@ -282,10 +277,19 @@ aquí estoy contigo hoy y siempre 💞
 
 <script>
 
-let nivel = 0;
+/* MOSTRAR MENSAJES */
+
+function mostrar(num){
+
+    for(let i=1;i<=5;i++){
+        document.getElementById("m"+i).style.display="none";
+    }
+
+    document.getElementById("m"+num).style.display="block";
+}
 
 
-/* CUENTA REGRESIVA */
+/* CONTADOR */
 
 const fecha = new Date("February 1, 2026 00:00:00").getTime();
 
@@ -301,9 +305,6 @@ setInterval(()=>{
 
         document.getElementById("final").style.display="block";
 
-        nivel = 1;
-        document.getElementById("b1").disabled = false;
-
         return;
     }
 
@@ -315,26 +316,6 @@ setInterval(()=>{
     "⏳ Faltan: " + horas + "h " + minutos + "m " + segundos + "s para nuestros 9 meses 💖";
 
 },1000);
-
-
-/* JUEGO */
-
-function mostrar(num){
-
-    if(num !== nivel) return;
-
-    for(let i=1;i<=5;i++){
-        document.getElementById("m"+i).style.display="none";
-    }
-
-    document.getElementById("m"+num).style.display="block";
-
-    if(nivel < 5){
-        nivel++;
-        document.getElementById("b"+nivel).disabled = false;
-    }
-
-}
 
 </script>
 
